@@ -22,4 +22,18 @@ public class PseudoDB {
             }
         }
     }
+
+    public static HashSet<Note> getNotes(){
+        return notes;
+    }
+
+    public static HashSet<Note> getUserNotes(String user){
+        HashSet<Note> userNotes = new HashSet<>();
+        for (Note note : notes){
+            if (note.getNoteCreator().equals(user)){
+                userNotes.add(note);
+            }
+        }
+        return userNotes;
+    }
 }

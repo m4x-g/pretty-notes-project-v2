@@ -1,9 +1,13 @@
 package com.app;
 
 import com.app.Enums.Categories;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
         User firstUserEver = new User("JC Denton");
         User secondUserEver = new User("Gunther Hermann");
 

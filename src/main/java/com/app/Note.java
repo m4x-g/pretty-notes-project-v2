@@ -19,6 +19,18 @@ public class Note {
         return noteCreator;
     }
 
+    public String getNoteTitle() {
+        return noteTitle;
+    }
+
+    public String getNoteBody() {
+        return noteBody;
+    }
+
+    public NoteCategories getNoteCategories() {
+        return noteCategories;
+    }
+
     protected void printNote(){
         System.out.println("------------------------------------------------------");
         System.out.println("I was created by: " + this.noteCreator);

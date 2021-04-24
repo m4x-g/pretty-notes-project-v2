@@ -1,9 +1,12 @@
 package com.app;
 
+import com.app.Enums.Categories;
+
 import java.util.HashSet;
 
 public class NoteCategories {
     private HashSet<com.app.Enums.Categories> categories = new HashSet<>();
+    private String categoriesList;
 
     protected void addCategories(com.app.Enums.Categories... newCategory){
         for (com.app.Enums.Categories category : newCategory){
@@ -16,5 +19,13 @@ public class NoteCategories {
             System.out.print(" [" + category + "]");
         }
         System.out.println();
+    }
+
+    public String getCategoriesList(){
+        categoriesList = "";
+        for (Categories category : categories){
+            categoriesList += "[ " + category + " ]";
+        }
+        return categoriesList;
     }
 }
