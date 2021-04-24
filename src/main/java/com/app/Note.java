@@ -1,4 +1,6 @@
-import Enums.Categories;
+package com.app;
+
+import com.app.Enums.Categories;
 
 public class Note {
     private String noteCreator;

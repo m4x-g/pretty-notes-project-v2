@@ -1,3 +1,5 @@
+package com.app;
+
 import java.util.HashSet;
 
 public class PseudoDB {

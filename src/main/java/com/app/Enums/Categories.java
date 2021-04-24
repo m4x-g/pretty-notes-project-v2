@@ -1,4 +1,4 @@
-package Enums;
+package com.app.Enums;
 
 public enum Categories {
     C1("people"),
