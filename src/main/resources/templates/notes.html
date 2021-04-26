@@ -17,7 +17,7 @@
     <td th:text="${note.noteCreator}">creator</td>
     <td th:text="${note.noteTitle}">title</td>
     <td th:text="${note.noteBody}">body</td>
-    <td th:each="category : ${note.noteCategories}" th:text="${category.categoriesList}">categories</td>
+    <td><ul><li th:each="category : ${note.noteCategories.categories}" th:text="${category}"></li></ul></td>
   </tr>
 </table>
 </body>
