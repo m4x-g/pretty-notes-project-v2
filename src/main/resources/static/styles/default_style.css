@@ -6,3 +6,11 @@ table, td, th{
     padding-right: 10px;
     margin: auto;
 }
+ul li {
+    list-style-type: none;
+    display: inline;
+}
+.category{
+    display: inline;
+    padding: 2px;
+}

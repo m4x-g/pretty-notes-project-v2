@@ -8,6 +8,10 @@ public class NoteCategories {
     private HashSet<com.app.Enums.Categories> categories = new HashSet<>();
     private String categoriesList;
 
+    public HashSet<Categories> getCategories() {
+        return categories;
+    }
+
     protected void addCategories(com.app.Enums.Categories... newCategory){
         for (com.app.Enums.Categories category : newCategory){
             this.categories.add(category);
