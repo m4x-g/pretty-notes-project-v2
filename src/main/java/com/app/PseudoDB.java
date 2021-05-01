@@ -9,6 +9,13 @@ public class PseudoDB {
         notes.add(note);
     }
 
+    public static Note validateNote(Note note){
+        if (note.getNoteCreator().isEmpty() || note.getNoteTitle().isEmpty() || note.getNoteBody().isEmpty()){
+            return null;
+        }
+        return note;
+    }
+
     public static void printAllNotes(){
         for (Note note : notes){
             note.printNote();

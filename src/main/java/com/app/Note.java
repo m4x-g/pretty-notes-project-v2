@@ -8,6 +8,12 @@ public class Note {
     private String noteBody;
     private NoteCategories noteCategories = new NoteCategories();
 
+    public Note() {
+        this.noteCreator = "";
+        this.noteTitle = "";
+        this.noteBody = "";
+    }
+
     public Note(String noteCreator, String noteTitle, String noteBody, Categories... noteCategories) {
         this.noteCreator = noteCreator;
         this.noteTitle = noteTitle;
@@ -19,12 +25,24 @@ public class Note {
         return noteCreator;
     }
 
+    public void setNoteCreator(String noteCreator) {
+        this.noteCreator = noteCreator;
+    }
+
     public String getNoteTitle() {
         return noteTitle;
     }
 
+    public void setNoteTitle(String noteTitle) {
+        this.noteTitle = noteTitle;
+    }
+
     public String getNoteBody() {
         return noteBody;
+    }
+
+    public void setNoteBody(String noteBody) {
+        this.noteBody = noteBody;
     }
 
     public NoteCategories getNoteCategories() {

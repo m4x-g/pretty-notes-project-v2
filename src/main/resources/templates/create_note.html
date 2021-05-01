@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles/default_style.css}">
+  <title>Create Note</title>
+</head>
+<body>
+<fieldset th:if="${status == 'error'}">
+  <legend>try again!</legend>
+  <div th:if="${note.noteCreator == ''}" th:text="'User name is empty'"/>
+  <div th:if="${note.noteTitle == ''}"  th:text="'Note Tile is empty'"/>
+  <div th:if="${note.noteBody == '' }" th:text="'Note text is empty'"/>
+</fieldset>
+<fieldset>
+  <legend>create new note, maggot!</legend>
+  <form class="form-container" th:action="@{/create_note}" th:object="${note}" method="post">
+    <input class="note-creator" type="text" placeholder="User Name" th:field="*{noteCreator}">
+    <input class="note-title" type="text" placeholder="Title" th:field="*{noteTitle}">
+    <textarea class="note-body" placeholder="Note Text" th:field="*{noteBody}"></textarea>
+    <input class="note-submit" type="submit" value="Create!">
+  </form>
+</fieldset>
+</body>
+</html>
