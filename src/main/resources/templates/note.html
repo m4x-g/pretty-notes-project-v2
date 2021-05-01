@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles/default_style.css}">
+  <title>New Note</title>
+</head>
+<body>
+<table class="border">
+  <tr>
+    <th>creator</th>
+    <th>title</th>
+    <th>body</th>
+  </tr>
+  <tr>
+    <td th:text="${note.noteCreator}">creator</td>
+    <td th:text="${note.noteTitle}">title</td>
+    <td th:text="${note.noteBody}">body</td>
+  </tr>
+</table>
+</body>
+</html>

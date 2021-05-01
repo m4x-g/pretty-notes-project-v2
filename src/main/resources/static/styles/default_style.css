@@ -5,12 +5,49 @@ table, td, th{
     padding-left: 10px;
     padding-right: 10px;
     margin: auto;
+    vertical-align: middle;
+    height: 30px;
 }
 ul li {
     list-style-type: none;
     display: inline;
 }
 .category{
-    display: inline;
-    padding: 2px;
+    border-radius: 4px;
+    display: inline-block;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    background-color: lightblue;
+    transition: transform .1s
+
+    margin-right: 1px;
+    margin-left: 1px;
+}
+.category:hover{
+    transform: scale(1.5);
+}
+fieldset{
+	border: 1px solid black;
+    width: 800px;
+    margin: auto;
+}
+input{
+    text-align: right;
+}
+.form-container{
+	display: grid;
+	grid-gap: 7px;
+	grid-template-columns: auto;
+}
+.note-creator, .note-title, .note-body, .note-submit{
+	border: 1px solid black;
+}
+.note-submit{
+	text-align: center;
+}
+textarea{
+	resize: vertical;
 }
