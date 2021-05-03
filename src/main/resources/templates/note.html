@@ -11,11 +11,14 @@
     <th>creator</th>
     <th>title</th>
     <th>body</th>
+    <th>categories</th>
   </tr>
   <tr>
     <td th:text="${note.noteCreator}">creator</td>
     <td th:text="${note.noteTitle}">title</td>
     <td th:text="${note.noteBody}">body</td>
+<!--    <td><div class="category" th:each="category, iterationStat : ${note.noteCategories.categories}" th:text="${!iterationStat.last} ? ${category} + ', ' : ${category}"></div></td>-->
+    <td><div class="category" th:each="category : ${note.noteCategories.categories}" th:text="${category}"></div></td>
   </tr>
 </table>
 </body>

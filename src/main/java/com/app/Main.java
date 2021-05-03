@@ -39,5 +39,14 @@ public class Main {
         PseudoDB.printAllUserNotes(secondUserEver.getUserName());
         System.out.println("==============================================================");
         System.out.println();
+
+        Note noteSix = new Note();
+        noteSix.setNoteBody("654");
+        noteSix.setNoteCategories(Categories.C1, Categories.C3);
+        System.out.println("--> " + noteSix.getNoteBody());
+        System.out.println("---> " + noteSix.getNoteCategories());
+        for (Categories cat : noteSix.getNoteCategories().getCategories()){
+            System.out.println(" -c--> " + cat);
+        }
     }
 }

@@ -49,6 +49,10 @@ public class Note {
         return noteCategories;
     }
 
+    public void setNoteCategories(Categories... noteCategories) {
+        this.noteCategories.addCategories(noteCategories);
+    }
+
     protected void printNote(){
         System.out.println("------------------------------------------------------");
         System.out.println("I was created by: " + this.noteCreator);

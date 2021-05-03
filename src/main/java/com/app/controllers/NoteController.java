@@ -2,8 +2,6 @@ package com.app.controllers;
 
 import com.app.Note;
 import com.app.PseudoDB;
-import com.app.services.NoteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +43,7 @@ public class NoteController {
             return "create_note";
         }
         PseudoDB.storeNote(note);
-        return "note";
+        model.addAttribute("note", PseudoDB.getNotes());
+        return "notes";
     }
 }
