@@ -2,11 +2,14 @@ package com.app;
 
 import com.app.Enums.Categories;
 
+import java.util.HashSet;
+
 public class Note {
     private String noteCreator;
     private String noteTitle;
     private String noteBody;
     private NoteCategories noteCategories = new NoteCategories();
+    private HashSet<com.app.Enums.Categories> categories = new HashSet<>();
 
     public Note() {
         this.noteCreator = "";
@@ -19,6 +22,14 @@ public class Note {
         this.noteTitle = noteTitle;
         this.noteBody = noteBody;
         this.noteCategories.addCategories(noteCategories);
+    }
+
+    public HashSet<Categories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(HashSet<Categories> categories) {
+        this.categories = categories;
     }
 
     public String getNoteCreator() {
@@ -51,6 +62,10 @@ public class Note {
 
     public void setNoteCategories(Categories... noteCategories) {
         this.noteCategories.addCategories(noteCategories);
+    }
+
+    public void setNoteCategories(HashSet<Categories> categories) {
+        this.noteCategories.setCategories(categories);
     }
 
     protected void printNote(){
