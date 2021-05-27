@@ -5,11 +5,13 @@ import com.app.Enums.Categories;
 import java.util.HashSet;
 
 public class Note {
+    private long noteCreatorId;
     private String noteCreator;
     private String noteTitle;
     private String noteBody;
     private NoteCategories noteCategories = new NoteCategories();
     private HashSet<com.app.Enums.Categories> categories = new HashSet<>();
+    private String[] categoriesArray;
 
     public Note() {
         this.noteCreator = "";
@@ -22,6 +24,22 @@ public class Note {
         this.noteTitle = noteTitle;
         this.noteBody = noteBody;
         this.noteCategories.addCategories(noteCategories);
+    }
+
+    public long getNoteCreatorId() {
+        return noteCreatorId;
+    }
+
+    public void setNoteCreatorId(long noteCreatorId) {
+        this.noteCreatorId = noteCreatorId;
+    }
+
+    public String[] getCategoriesArray() {
+        return categoriesArray;
+    }
+
+    public void setCategoriesArray(String[] categoriesArray) {
+        this.categoriesArray = categoriesArray;
     }
 
     public HashSet<Categories> getCategories() {

@@ -19,7 +19,7 @@
     <input class="note-title" type="text" placeholder="Title" th:field="*{noteTitle}">
     <textarea class="note-body" placeholder="Note Text" th:field="*{noteBody}"></textarea>
     <ul>
-      <li th:each="category : ${T(com.app.Enums.Categories).values()}"><input type="checkbox" th:value="${category}" th:text="${category.categoryName}" th:field="*{Categories}"></li>
+      <li th:each="category : ${T(com.app.Enums.Categories).values()}"><input type="checkbox" th:value="${category}" th:text="${category.categoryName}" th:field="*{categoriesArray}"></li>
     </ul>
     <input class="note-submit" type="submit" value="Create!">
   </form>

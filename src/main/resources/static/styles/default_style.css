@@ -42,7 +42,8 @@ input{
 	grid-gap: 7px;
 	grid-template-columns: auto;
 }
-.note-creator, .note-title, .note-body, .note-submit{
+.note-creator, .note-title, .note-body,
+.note-submit, user-name, user-password{
 	border: 1px solid black;
 }
 .note-submit{

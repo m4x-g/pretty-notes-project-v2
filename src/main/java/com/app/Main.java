@@ -1,6 +1,7 @@
 package com.app;
 
 import com.app.Enums.Categories;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
