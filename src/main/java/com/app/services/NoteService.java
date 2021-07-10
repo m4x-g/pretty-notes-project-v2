@@ -16,8 +16,16 @@ public class NoteService {
     public List<Note> getAllNotes(){
        return noteDao.getAllNotes();
     }
+
+    public List<Note> getAllNotesByCategory(String category){
+       return noteDao.getAllNotesByCategory(category);
+    }
+
     public List<Note> getUserNotes(long id){
        return noteDao.getUserNotes(id);
+    }
+    public List<Note> getUserNotesByCategory(long id, String category){
+       return noteDao.getUserNotesByCategory(id, category);
     }
 
     public Note validateNote(Note note){

@@ -20,7 +20,7 @@
     <td th:text="${note.noteBody}">body</td>
 <!--    <td><div class="category" th:each="category, iterationStat : ${note.noteCategories.categories}" th:text="${!iterationStat.last} ? ${category} + ', ' : ${category}"></div></td>-->
     <td>
-      <div class="category" th:each="category : ${note.categoriesArray}" th:text="${category}"></div>
+      <a class="category" th:each="category : ${note.categoriesArray}" th:href="@{notes(c=${category})}" th:text="${category}"></a>
     </td>
   </tr>
 </table>

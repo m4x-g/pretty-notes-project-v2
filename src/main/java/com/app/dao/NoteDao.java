@@ -28,6 +28,21 @@ public class NoteDao {
                 "u.name AS u_name " +
                 "FROM notes n LEFT JOIN users u ON n.user_id = u.id", noteRowMapper);
     }
+
+    public List<Note> getAllNotesByCategory(String category){
+        RowMapper<Note> noteRowMapper = (resultSet, rowNumber) -> mapNote(resultSet);
+        //the query fails if formed directly in the return statement... why?
+        String sql = "SELECT " +
+                "n.user_id AS n_user_id, " +
+                "n.title AS n_title, " +
+                "n.body AS n_body, " +
+                "n.categories AS n_categories, " +
+                "u.id AS u_id, " +
+                "u.name AS u_name " +
+                "FROM notes n LEFT JOIN users u ON n.user_id = u.id WHERE '" + category + "' = any(categories)";
+        return jdbcTemplate.query(sql, noteRowMapper);
+    }
+
     public List<Note> getUserNotes(long userId){
         RowMapper<Note> noteRowMapper = (resultSet, rowNumber) -> mapNote(resultSet);
         return jdbcTemplate.query("SELECT " +
@@ -38,6 +53,21 @@ public class NoteDao {
                 "u.id AS u_id, " +
                 "u.name AS u_name " +
                 "FROM notes n LEFT JOIN users u ON n.user_id = u.id WHERE n.user_ID = ?", noteRowMapper, userId);
+    }
+
+    public List<Note> getUserNotesByCategory(long userId, String category){
+        RowMapper<Note> noteRowMapper = (resultSet, rowNumber) -> mapNote(resultSet);
+        //the query fails if formed directly in the return statement... why?
+        String sql = "SELECT " +
+                "n.user_id AS n_user_id, " +
+                "n.title AS n_title, " +
+                "n.body AS n_body, " +
+                "n.categories AS n_categories, " +
+                "u.id AS u_id, " +
+                "u.name AS u_name " +
+                "FROM notes n LEFT JOIN users u ON n.user_id = u.id " +
+                " WHERE n.user_ID = '" + userId + "' AND '" + category + "' = any(categories)";
+        return jdbcTemplate.query(sql, noteRowMapper);
     }
 
     private Note mapNote(ResultSet resultSet) throws SQLException{

@@ -14,12 +14,23 @@ public class NoteController {
     private NoteService noteService;
 
     @GetMapping("/notes")
-    public String getNotesPage(@RequestParam(name = "id", required = false) String userId, Model model){
-        if (userId == null) {
+    public String getNotesPage(@RequestParam(name = "id", required = false) String userId, @RequestParam(name = "c", required = false) String category, Model model){
+        if (userId == null && category == null) {
             model.addAttribute("note", noteService.getAllNotes());
-        } else {
+        }
+
+        if (userId != null && category == null) {
             model.addAttribute("note", noteService.getUserNotes(Long.parseLong(userId)));
         }
+
+        if (userId == null && category != null) {
+            model.addAttribute("note", noteService.getAllNotesByCategory(category));
+        }
+
+        if (userId != null && category != null) {
+            model.addAttribute("note", noteService.getUserNotesByCategory(Long.parseLong(userId), category));
+        }
+
         return "notes";
     }
 
