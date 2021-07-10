@@ -35,6 +35,6 @@ public class UserController {
             return "register";
         }
         model.addAttribute("users", userService.getAllUsers());
-        return "users";
+        return "redirect:/users";
     }
 }

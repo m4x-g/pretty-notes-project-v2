@@ -16,12 +16,31 @@ public class NoteService {
     public List<Note> getAllNotes(){
        return noteDao.getAllNotes();
     }
+    public List<Note> getUserNotes(long id){
+       return noteDao.getUserNotes(id);
+    }
 
     public Note validateNote(Note note){
-        if (note.getNoteCreator().isEmpty() || note.getNoteTitle().isEmpty() || note.getNoteBody().isEmpty()){
-            return null;
+        note.setValidated(true);
+
+        if (note.getNoteCreator().isEmpty()) {
+            note.setValidated(false);
+            note.setErrors("User name is empty");
         }
-        noteDao.storeNote(note);
+
+        if (note.getNoteTitle().isEmpty()) {
+            note.setValidated(false);
+            note.setErrors("Note Tile is empty");
+        }
+
+        if (note.getNoteBody().isEmpty()) {
+            note.setValidated(false);
+            note.setErrors("Note text is empty");
+        }
+
+        if (note.isValidated()) {
+            noteDao.storeNote(note);
+        }
         return note;
     }
 }

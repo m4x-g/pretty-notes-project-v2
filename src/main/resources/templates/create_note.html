@@ -6,11 +6,12 @@
   <title>Create Note</title>
 </head>
 <body>
+<div th:replace="fragments :: pill-navigation"></div>
 <fieldset th:if="${status == 'error'}">
-  <legend>try again!</legend>
-  <div th:if="${note.noteCreator == ''}" th:text="'User name is empty'"/>
-  <div th:if="${note.noteTitle == ''}"  th:text="'Note Tile is empty'"/>
-  <div th:if="${note.noteBody == '' }" th:text="'Note text is empty'"/>
+  <legend>no! try again!</legend>
+  <ul>
+    <li th:each="error : ${note.errors}" th:text="${error}"></li>
+  </ul>
 </fieldset>
 <fieldset>
   <legend>create new note, maggot!</legend>
@@ -19,7 +20,8 @@
     <input class="note-title" type="text" placeholder="Title" th:field="*{noteTitle}">
     <textarea class="note-body" placeholder="Note Text" th:field="*{noteBody}"></textarea>
     <ul>
-      <li th:each="category : ${T(com.app.Enums.Categories).values()}"><input type="checkbox" th:value="${category}" th:text="${category.categoryName}" th:field="*{categoriesArray}"></li>
+<!--      <li th:each="category : ${T(com.app.Enums.Categories).values()}"><input type="checkbox" th:value="${category.categoryName}" th:text="${category.categoryName}" th:field="*{categoriesArray}"></li>-->
+      <li class="note-creation-category" th:each="category : ${T(com.app.Enums.Categories).values()}"><input type="checkbox" th:value="${category.categoryName}" th:text="${category.categoryName}" th:field="*{categoriesArray}"></li>
     </ul>
     <input class="note-submit" type="submit" value="Create!">
   </form>

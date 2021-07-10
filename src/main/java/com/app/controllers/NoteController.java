@@ -6,10 +6,7 @@ import com.app.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class NoteController {
@@ -17,8 +14,12 @@ public class NoteController {
     private NoteService noteService;
 
     @GetMapping("/notes")
-    public String getNotesPage(Model model){
-        model.addAttribute("note", noteService.getAllNotes());
+    public String getNotesPage(@RequestParam(name = "id", required = false) String userId, Model model){
+        if (userId == null) {
+            model.addAttribute("note", noteService.getAllNotes());
+        } else {
+            model.addAttribute("note", noteService.getUserNotes(Long.parseLong(userId)));
+        }
         return "notes";
     }
 
@@ -36,11 +37,12 @@ public class NoteController {
 
     @PostMapping("/create_note")
     public String createNote(@ModelAttribute Note note, Model model){
-        if (noteService.validateNote(note) == null){
+        if (!noteService.validateNote(note).isValidated()){
+            model.addAttribute("status", "error");
             model.addAttribute("note", note);
             return "create_note";
         }
         model.addAttribute("note", noteService.getAllNotes());
-        return "notes";
+        return "redirect:/notes";
     }
 }

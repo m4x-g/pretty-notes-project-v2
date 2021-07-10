@@ -6,6 +6,7 @@
   <title>notes display</title>
 </head>
 <body>
+<div th:replace="fragments :: pill-navigation"></div>
 <table class="border">
   <tr>
     <th>creator</th>
@@ -14,13 +15,11 @@
     <th>categories</th>
   </tr>
   <tr th:each="note : ${note}">
-    <td th:text="${note.noteCreatorId}">creator</td>
+    <td><a th:href="@{notes(id=${note.noteCreatorId})}" th:text="${note.noteCreator}"></a></td>
     <td th:text="${note.noteTitle}">title</td>
     <td th:text="${note.noteBody}">body</td>
 <!--    <td><div class="category" th:each="category, iterationStat : ${note.noteCategories.categories}" th:text="${!iterationStat.last} ? ${category} + ', ' : ${category}"></div></td>-->
     <td>
-      <div class="category" th:each="category : ${note.noteCategories.categories}" th:text="${category.categoryName}"></div>
-      <div class="category" th:each="category : ${note.Categories}" th:text="${category.categoryName}"></div>
       <div class="category" th:each="category : ${note.categoriesArray}" th:text="${category}"></div>
     </td>
   </tr>

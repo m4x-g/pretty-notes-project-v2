@@ -2,6 +2,7 @@ package com.app;
 
 import com.app.Enums.Categories;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Note {
@@ -12,6 +13,8 @@ public class Note {
     private NoteCategories noteCategories = new NoteCategories();
     private HashSet<com.app.Enums.Categories> categories = new HashSet<>();
     private String[] categoriesArray;
+    private boolean validated;
+    private ArrayList<String> errors = new ArrayList();
 
     public Note() {
         this.noteCreator = "";
@@ -36,6 +39,21 @@ public class Note {
 
     public String[] getCategoriesArray() {
         return categoriesArray;
+    }
+
+    public String getCategoriesArrayAsString() {
+        if (categoriesArray.length > 0) {
+            StringBuilder categoriesString = new StringBuilder("{");
+            for (int i=0;  i < categoriesArray.length; i++) {
+                categoriesString.append(categoriesArray[i]);
+                if (i < categoriesArray.length -1) {
+                    categoriesString.append(",");
+                }
+            }
+            categoriesString.append("}");
+            return categoriesString.toString();
+        }
+        return "{}";
     }
 
     public void setCategoriesArray(String[] categoriesArray) {
@@ -86,6 +104,21 @@ public class Note {
         this.noteCategories.setCategories(categories);
     }
 
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
+    }
+
+    public ArrayList getErrors() {
+        return errors;
+    }
+
+    public void setErrors(String error) {
+        this.errors.add(error);
+    }
     protected void printNote(){
         System.out.println("------------------------------------------------------");
         System.out.println("I was created by: " + this.noteCreator);

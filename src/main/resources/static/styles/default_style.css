@@ -8,7 +8,7 @@ table, td, th{
     vertical-align: middle;
     height: 30px;
 }
-ul li {
+.note-creation-category {
     list-style-type: none;
     display: inline;
 }
@@ -51,4 +51,36 @@ input{
 }
 textarea{
 	resize: vertical;
+}
+.pill-nav a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.pill-nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.pill-nav a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 800px;
+    margin: 10px auto;
+    text-align: end;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: currentColor;
 }
