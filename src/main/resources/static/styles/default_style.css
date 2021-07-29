@@ -77,6 +77,7 @@ textarea{
     width: 800px;
     margin: 10px auto;
     text-align: end;
+    display: block ruby;
 }
 
 a {

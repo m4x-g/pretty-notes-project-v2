@@ -10,6 +10,9 @@
   <a href="http://localhost:8080/create_note">create new note</a>
   <a href="http://localhost:8080/users">list all users</a>
   <a href="http://localhost:8080/register">register</a>
+  <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out">
+  </form>
 </div>
 </body>
 </html>
