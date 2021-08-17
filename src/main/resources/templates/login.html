@@ -2,19 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/default_style.css}">
     <title>Login Page</title>
 </head>
 <body>
-<div th:if="${param.error}">
-    Invalid username or password!
-</div>
-<div th:if="${param.logout}">
-    You have been logged out!
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label>username:</label><input type="text" name="username"></div>
-    <div><label>password:</label><input type="password" name="password"></div>
-    <div><input type="submit" value="Sign In"></div>
-</form>
+<div th:replace="fragments :: pill-navigation"></div>
+<fieldset th:if="${param.error}">
+    <legend>try again!</legend>
+    <ul>
+        <li>Invalid username or password!</li>
+    </ul>
+</fieldset>
+<fieldset th:if="${param.logout}">
+    <legend>bye-bye!</legend>
+    <ul>
+        <li>You have been logged out!</li>
+    </ul>
+</fieldset>
+<fieldset>
+    <legend>sign in here, maggot!</legend>
+    <form class="form-container" th:action="@{/login}" method="post">
+        <input class="user-name" type="text" name="username" placeholder="enter your forgettable name here">
+        <input class="user-password" type="password" name="password" placeholder="enter your forgettable random string here">
+        <input class="user-submit" type="submit" value="Let me in!">
+    </form>
+</fieldset>
 </body>
 </html>
