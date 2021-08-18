@@ -21,6 +21,11 @@ public class UserDao {
         return jdbcTemplate.query("SELECT * FROM users", userRowMapper);
     }
 
+    public List<User> getUserByName(String username){
+        RowMapper<User> userRowMapper = (resultSet, RowNumber) -> mapUser(resultSet);
+        return jdbcTemplate.query("SELECT * FROM users WHERE name = ?", userRowMapper, username);
+    }
+
     public boolean checkUserNameAvailability(String username){
         String sql = "SELECT 1 FROM users WHERE name = '" + username + "' LIMIT 1";
         RowCountCallbackHandler rowCountCallbackHandler = new RowCountCallbackHandler();

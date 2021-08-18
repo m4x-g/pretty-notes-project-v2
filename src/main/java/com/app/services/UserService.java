@@ -4,6 +4,7 @@ import com.app.User;
 import com.app.dao.UserDao;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,11 @@ public class UserService {
             user.setErrors("password cannot be empty");
         }
 
+        if (!user.getUserPassword().equals(user.getUserPassword2())) {
+            user.setValidated(false);
+            user.setErrors("the password does not match the one entered in the confirmation field");
+        }
+
         if (!user.getUserName().isEmpty()){
             if (!userDao.checkUserNameAvailability(user.getUserName())){
                 user.setValidated(false);
@@ -38,8 +44,13 @@ public class UserService {
         }
 
         if (user.isValidated()) {
-            String hashedPassword = BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt());
-            user.setUserPassword(hashedPassword);
+//            String hashedPassword = BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt());
+//            user.setUserPassword(hashedPassword);
+
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String encodedPassword = encoder.encode(user.getUserPassword());
+            user.setUserPassword(encodedPassword);
+
             userDao.storeUser(user);
         }
         return user;

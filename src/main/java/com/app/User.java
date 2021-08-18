@@ -8,6 +8,7 @@ public class User {
     private long userId;
     private String userName;
     private String userPassword;
+    private String userPassword2;
     private boolean validated;
     private ArrayList<String> errors = new ArrayList();
 
@@ -40,6 +41,14 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserPassword2() {
+        return userPassword2;
+    }
+
+    public void setUserPassword2(String userPassword2) {
+        this.userPassword2 = userPassword2;
     }
 
     public boolean isValidated() {
